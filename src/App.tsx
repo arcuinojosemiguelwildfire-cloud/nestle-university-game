@@ -368,7 +368,7 @@ export default function App() {
   }, [showGreeting, playTone]);
 
   // --- Initialization ---
-  const initGame = useCallback(() => {
+  const initGame = useCallback((clearPlayerInfo = false) => {
     setShuffledDepts([...DEPARTMENTS].sort(() => Math.random() - 0.5));
     setShuffledZones([...DEPARTMENTS].sort(() => Math.random() - 0.5));
     setAssignments({});
@@ -385,6 +385,14 @@ export default function App() {
     setDbSaveError(null);
     setDbSaveSuccess(false);
     setScoreSaved(false);
+
+    if (clearPlayerInfo) {
+      setFirstName('');
+      setSurname('');
+      localStorage.removeItem('nestle_player_firstname');
+      localStorage.removeItem('nestle_player_surname');
+      localStorage.removeItem('nestle_player_name');
+    }
   }, []);
 
   useEffect(() => {
@@ -1123,7 +1131,7 @@ export default function App() {
                     {/* Play Again Button */}
                     <div className="flex flex-col sm:flex-row gap-3 items-center justify-center mt-5">
                       <button
-                        onClick={initGame}
+                        onClick={() => initGame(true)}
                         style={{
                           background: score === DEPARTMENTS.length
                             ? 'linear-gradient(to right, #72d239, #5fc7c2)'
