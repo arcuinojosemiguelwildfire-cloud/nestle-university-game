@@ -657,14 +657,14 @@ export default function App() {
             {/* Column Title Cards */}
             <div>
               <h2 className="font-brand font-black text-slate-700 text-xs uppercase tracking-widest flex items-center gap-1.5">
-                <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded bg-[#eea135] text-[10px] sm:text-[11px] text-white flex items-center justify-center font-brand font-black shadow-xs">1</span>
-                Departments
+                <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded bg-[#eea135] text-[10px] sm:text-[11px] text-white flex items-center justify-center font-brand font-black shadow-xs">A</span>
+                FUNCTIONS
               </h2>
             </div>
             <div>
               <h2 className="font-brand font-black text-slate-700 text-xs uppercase tracking-widest flex items-center gap-1.5">
-                <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded bg-[#eea135] text-[10px] sm:text-[11px] text-white flex items-center justify-center font-brand font-black shadow-xs">2</span>
-                Description
+                <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded bg-[#eea135] text-[10px] sm:text-[11px] text-white flex items-center justify-center font-brand font-black shadow-xs">B</span>
+                TASK
               </h2>
             </div>
           </div>
@@ -969,7 +969,7 @@ export default function App() {
             <div className="text-center">
 
               <p className="text-[10.5px] text-slate-400 mt-0.5">
-                Drag each department card, or tap to select and pair them, with their matching descriptions on the right.
+                Drag each function card, or tap to select and pair them, with their matching tasks on the right.
               </p>
             </div>
           </div>
@@ -1027,7 +1027,7 @@ export default function App() {
 
                     <p className="anime-desc text-slate-600 font-medium text-xs sm:text-sm mb-5 max-w-lg mx-auto leading-relaxed opacity-0">
                       {score === DEPARTMENTS.length
-                        ? "Fantastic! You have successfully aligned the departments of Nestlé University."
+                        ? "Fantastic! You have successfully matched the functions of Nestlé University."
                         : timeLeft <= 0
                           ? "Time has expired, but learning never stops! Review your match summary below to improve."
                           : "Good attempt! Dynamic challenges require proper tuning. Review the guide below to master alignments!"}
@@ -1054,7 +1054,7 @@ export default function App() {
                         className="anime-stat border rounded-2xl p-3.5 flex flex-col items-center shadow-xs transition-colors hover:bg-slate-50/50 opacity-0"
                       >
                         <span className="font-brand font-black text-xl sm:text-2.5xl text-[#5fc7c2] mb-0.5">{score}/5</span>
-                        <span className="text-[9px] text-slate-500 font-brand font-black uppercase tracking-wider">Department Aligned</span>
+                        <span className="text-[9px] text-slate-500 font-brand font-black uppercase tracking-wider">Functions Aligned</span>
                       </div>
                     </div>
 
@@ -1082,7 +1082,7 @@ export default function App() {
                             </div>
                           )}
                           <p className="text-slate-500 text-[10px] sm:text-xs mt-2 max-w-sm leading-relaxed font-brand font-medium">
-                            Awarded for perfectly matching the goals, operations, and strategic values of the five organizational departments.
+                            Awarded for perfectly matching the goals, operations, and strategic values of the five organizational functions.
                           </p>
                         </div>
                       </div>
@@ -1166,7 +1166,7 @@ export default function App() {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.92, opacity: 0, y: 15 }}
                 transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                className="p-[1.5px] rounded-[2.5rem] bg-linear-to-r from-[#72d239] to-[#5fc7c2] shadow-[0_35px_80px_rgba(0,0,0,0.25)] w-full max-w-xl relative z-10"
+                className="p-[1.5px] rounded-[2.5rem] bg-linear-to-r from-[#72d239] to-[#5fc7c2] shadow-[0_35px_80px_rgba(0,0,0,0.25)] w-full max-w-2xl relative z-10"
               >
                 <div className="w-full bg-white/98 rounded-[2.4rem] overflow-hidden relative shadow-inner flex flex-col">
                   <div className="bg-slate-50/50 p-0 text-white flex items-center justify-center relative overflow-hidden border-b border-slate-100">
@@ -1191,14 +1191,14 @@ export default function App() {
                         <div className="flex items-start gap-2.5">
                           <div className="w-1.5 h-1.5 rounded-full bg-[#2d8b86] mt-1.5 shrink-0" />
                           <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
-                            Drag the <span className="font-black text-[#2d8b86]">Department Title</span> to its corresponding description on the right.
+                            Match the <span className="font-black text-[#2d8b86]">Functions in Column A</span> to the correct <span className="font-black text-[#2d8b86]">tasks in Column B</span>.
                           </p>
                         </div>
 
                         <div className="flex items-start gap-2.5">
                           <div className="w-1.5 h-1.5 rounded-full bg-[#4c921f] mt-1.5 shrink-0" />
                           <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
-                            Align all <span className="font-black text-[#4c921f]">5 departments</span> correctly within <span className="font-black text-[#2d8b86]">1 minute</span>.
+                            Align all <span className="font-black text-[#4c921f]">5 functions</span> correctly within <span className="font-black text-[#2d8b86]">1 minute</span>.
                           </p>
                         </div>
                       </div>
