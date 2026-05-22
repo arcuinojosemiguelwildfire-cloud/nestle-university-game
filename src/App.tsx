@@ -1091,21 +1091,23 @@ export default function App() {
                     {score !== DEPARTMENTS.length && (
                       <div className="anime-review border-t border-slate-100 pt-4.5 mt-4 pb-1 text-left opacity-0">
                         <div className="flex items-center justify-between mb-2.5">
-                          <h3 className="font-brand font-black text-slate-800 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5 text-[#5fc7c2]" />
-                            Correct Answers
+                          <h3 className="font-brand font-black text-slate-800 text-xs sm:text-sm uppercase tracking-wider flex items-center justify-between w-full">
+                            <span className="flex items-center gap-2">
+                              <GraduationCap className="w-5 h-5 text-[#5fc7c2]" />
+                              Correct Answers
+                            </span>
                           </h3>
                         </div>
 
-                        {/* Staggered educational answers deck */}
-                        <div className="space-y-2 max-h-[190px] overflow-y-auto pr-1">
+                        {/* Staggered educational answers deck - non-scrollable */}
+                        <div className="space-y-2">
                           {DEPARTMENTS.map((item) => {
                             const style = CATEGORY_STYLES[item.category];
                             const MatchIcon = item.icon;
                             return (
                               <div
                                 key={item.id}
-                                className="bg-slate-50 border border-slate-100/90 p-2.5 rounded-xl flex items-start gap-3 transition-all hover:bg-slate-100/60"
+                                className="bg-slate-50 border border-slate-100/90 p-2 rounded-xl flex items-start gap-3 transition-all hover:bg-slate-100/60"
                               >
                                 <div
                                   style={{ backgroundColor: style.bgMedium, color: style.color }}
@@ -1114,10 +1116,10 @@ export default function App() {
                                   <MatchIcon className="w-4 h-4" />
                                 </div>
                                 <div className="flex-1">
-                                  <div className="flex items-center flex-wrap gap-2 mb-1">
+                                  <div className="flex items-center flex-wrap gap-2">
                                     <h4 className="font-brand font-black text-slate-800 text-sm">{item.name}</h4>
                                   </div>
-                                  <p className="text-slate-500 text-xs leading-relaxed mt-1">
+                                  <p className="text-slate-500 text-[11px] leading-relaxed mt-0.5">
                                     Goal: <span className="font-medium font-brand text-slate-600">{item.zoneDesc}</span>
                                   </p>
                                 </div>
@@ -1164,98 +1166,100 @@ export default function App() {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.92, opacity: 0, y: 15 }}
                 transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                className="bg-white/95 backdrop-blur-lg w-full max-w-md rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] border border-slate-200/60 flex flex-col"
+                className="p-[1.5px] rounded-[2.5rem] bg-linear-to-r from-[#72d239] to-[#5fc7c2] shadow-[0_35px_80px_rgba(0,0,0,0.25)] w-full max-w-xl relative z-10"
               >
-                <div className="bg-[#134988] px-2 py-4 text-white flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 nestle-pattern opacity-[0.06] pointer-events-none" />
-                  <img
-                    src={nestleLogo}
-                    alt="Nestlé Logo"
-                    referrerPolicy="no-referrer"
-                    className="h-20 w-auto object-contain relative z-10"
-                  />
-                </div>
-
-                <div className="p-6 space-y-5">
-
-                  {/* Mechanics block */}
-                  <div className="bg-slate-50/70 border border-slate-100 rounded-2xl p-4.5 space-y-3.5">
-                    <h4 className="font-brand font-black text-[11px] uppercase tracking-widest text-[#134988] border-b border-slate-150 pb-1.5 flex items-center gap-2">
-                      Mechanics:
-                    </h4>
-
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#5fc7c2] mt-1.5 shrink-0" />
-                        <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
-                          Drag the <span className="font-black text-[#134988]">Department Title</span> to its corresponding description on the right.
-                        </p>
-                      </div>
-
-                      <div className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#72d239] mt-1.5 shrink-0" />
-                        <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
-                          Align all <span className="font-black text-[#134988]">5 departments</span> correctly within <span className="font-black text-[#134988]">1 minute</span>.
-                        </p>
-                      </div>
-                    </div>
+                <div className="w-full bg-white/98 rounded-[2.4rem] overflow-hidden relative shadow-inner flex flex-col">
+                  <div className="bg-slate-50/50 p-0 text-white flex items-center justify-center relative overflow-hidden border-b border-slate-100">
+                    <div className="absolute inset-0 nestle-pattern opacity-[0.05] pointer-events-none" />
+                    <img
+                      src={nestleULogo}
+                      alt="Nestlé University Logo"
+                      referrerPolicy="no-referrer"
+                      className="h-60 sm:h-72 w-auto max-w-full object-contain relative z-10 -my-8 sm:-my-12 py-0"
+                    />
                   </div>
 
-                  {/* Player Name Input Block */}
-                  <div className="space-y-3.5 border-t border-slate-100 pt-4.5">
-                    <div className="grid grid-cols-2 gap-3.5">
-                      <div className="space-y-1.5 text-left">
-                        <label className="block text-[9px] font-brand font-black uppercase tracking-wider text-slate-500">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          value={firstName}
-                          onChange={(e) => {
-                            setFirstName(e.target.value);
-                            if (e.target.value.trim() && surname.trim()) {
-                              setShowNameError(false);
-                            }
-                          }}
-                          placeholder="e.g. Henri"
-                          className="w-full bg-slate-50 border border-slate-200 focus:border-[#134988] rounded-xl px-3.5 py-2.5 text-slate-800 text-xs font-semibold font-brand transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-[#134988]/5"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-1.5 text-left">
-                        <label className="block text-[9px] font-brand font-black uppercase tracking-wider text-slate-500">
-                          Surname
-                        </label>
-                        <input
-                          type="text"
-                          value={surname}
-                          onChange={(e) => {
-                            setSurname(e.target.value);
-                            if (firstName.trim() && e.target.value.trim()) {
-                              setShowNameError(false);
-                            }
-                          }}
-                          placeholder="e.g. Nestlé"
-                          className="w-full bg-slate-50 border border-slate-200 focus:border-[#134988] rounded-xl px-3.5 py-2.5 text-slate-800 text-xs font-semibold font-brand transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-[#134988]/5"
-                          required
-                        />
+                  <div className="pt-4 px-6 pb-6 sm:pt-5 sm:px-8 sm:pb-8 space-y-6">
+
+                    {/* Mechanics block */}
+                    <div className="w-full border-2 border-dashed border-[#72d239]/25 rounded-2xl p-5 bg-slate-50/50 relative overflow-hidden flex flex-col">
+                      <h4 className="font-brand font-black text-xs uppercase tracking-widest bg-clip-text text-transparent bg-linear-to-r from-[#2d8b86] to-[#4c921f] border-b border-[#72d239]/15 pb-1.5 flex items-center gap-2">
+                        Mechanics:
+                      </h4>
+
+                      <div className="space-y-3 mt-3.5">
+                        <div className="flex items-start gap-2.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#2d8b86] mt-1.5 shrink-0" />
+                          <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
+                            Drag the <span className="font-black text-[#2d8b86]">Department Title</span> to its corresponding description on the right.
+                          </p>
+                        </div>
+
+                        <div className="flex items-start gap-2.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#4c921f] mt-1.5 shrink-0" />
+                          <p className="text-xs text-slate-700 font-medium leading-relaxed font-brand">
+                            Align all <span className="font-black text-[#4c921f]">5 departments</span> correctly within <span className="font-black text-[#2d8b86]">1 minute</span>.
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    {showNameError && (
-                      <p className="text-[10px] sm:text-xs font-brand font-black text-rose-500 leading-tight text-center py-1 bg-rose-50 border border-rose-100 rounded-xl animate-pulse">
-                        Both First Name and Surname are required!
-                      </p>
-                    )}
-                  </div>
+                    {/* Player Name Input Block */}
+                    <div className="space-y-3.5 border-t border-slate-100 pt-4.5">
+                      <div className="grid grid-cols-2 gap-3.5">
+                        <div className="space-y-1.5 text-left">
+                          <label className="block text-[9px] font-brand font-black uppercase tracking-wider text-slate-500">
+                            First Name
+                          </label>
+                          <input
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                              if (e.target.value.trim() && surname.trim()) {
+                                setShowNameError(false);
+                              }
+                            }}
+                            placeholder="e.g. Henri"
+                            className="w-full bg-slate-50 border border-slate-200 focus:border-[#2d8b86] rounded-xl px-3.5 py-2.5 text-slate-800 text-xs font-semibold font-brand transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-[#2d8b86]/5"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-1.5 text-left">
+                          <label className="block text-[9px] font-brand font-black uppercase tracking-wider text-slate-500">
+                            Surname
+                          </label>
+                          <input
+                            type="text"
+                            value={surname}
+                            onChange={(e) => {
+                              setSurname(e.target.value);
+                              if (firstName.trim() && e.target.value.trim()) {
+                                setShowNameError(false);
+                              }
+                            }}
+                            placeholder="e.g. Nestlé"
+                            className="w-full bg-slate-50 border border-slate-200 focus:border-[#2d8b86] rounded-xl px-3.5 py-2.5 text-slate-800 text-xs font-semibold font-brand transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-[#2d8b86]/5"
+                            required
+                          />
+                        </div>
+                      </div>
 
-                  <div className="flex flex-col gap-4">
-                    <button
-                      onClick={handleCloseInstructions}
-                      className="w-full text-white font-brand font-black py-4 rounded-2xl shadow-xl shadow-[#134988]/20 transition-all font-black uppercase text-xs tracking-wider transform active:scale-[0.985] cursor-pointer bg-[#134988] hover:bg-[#0f3a6d]"
-                    >
-                      START
-                    </button>
+                      {showNameError && (
+                        <p className="text-[10px] sm:text-xs font-brand font-black text-rose-500 leading-tight text-center py-1 bg-rose-50 border border-rose-100 rounded-xl animate-pulse">
+                          Both First Name and Surname are required!
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                      <button
+                        onClick={handleCloseInstructions}
+                        className="w-full text-white font-brand font-black py-4 rounded-2xl shadow-lg shadow-[#72d239]/20 transition-all font-black uppercase text-xs tracking-wider transform active:scale-[0.985] cursor-pointer bg-linear-to-r from-[#72d239] to-[#5fc7c2] hover:opacity-95 hover:brightness-105 focus:outline-hidden focus:ring-4 focus:ring-[#72d239]/20"
+                      >
+                        START
+                      </button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
